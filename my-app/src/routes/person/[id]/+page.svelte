@@ -2,4 +2,4 @@
   let { data } = $props();
 </script>
 
-<p>{data.person.name}</p>
+<img src="https://fdnd.directus.app/assets/{data.person.mugshot}" alt="" width="300">
