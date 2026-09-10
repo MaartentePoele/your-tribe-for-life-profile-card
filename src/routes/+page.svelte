@@ -4,34 +4,47 @@
   import LinkedinIcon from "$lib/components/icons/LinkedinIcon.svelte";
   import PhoneIcon from "$lib/components/icons/PhoneIcon.svelte";
   import WebsiteIcon from "$lib/components/icons/WebsiteIcon.svelte";
+
+  let { data } = $props();
+  const person = data.person;
+
+  function formatEmail(name) {
+    return name.replaceAll(" ", ".").toLowerCase();
+  }
+
+  function formatLinkedIn(name) {
+    return name.replaceAll(" ", "-").toLowerCase();
+  }
 </script>
 
 <main>
   <article>
     <figure>
       <img
-        src="https://fdnd.directus.app/assets/ee9e43f9-4b86-4969-bbf9-b36a223ef9ca"
-        alt="Profielfoto van Maarten te Poele"
+        src="https://fdnd.directus.app/assets/{person.mugshot_year2}"
+        alt="Profielfoto van {person.name}"
       />
     </figure>
 
-    <h1>Maarten te Poele</h1>
+    <h1>{person.name}</h1>
     <h2>Frontend Developer</h2>
     <ul>
       <li>
         <PhoneIcon />
         06-12345678
       </li>
-      <li><EmailIcon />maarten.te.poele@hva.nl</li>
+      <li><EmailIcon />{formatEmail(person.name)}@hva.nl</li>
       <li>
-        <a href="https://maartentepoele.github.io/i-love-web/" target="_blank">
+        <a href={person.website} target="_blank">
           <WebsiteIcon />
           Portfolio</a
         >
       </li>
       <li>
         <a
-          href="https://www.linkedin.com/in/maarten-te-poele-3a7a57332/"
+          href="https://www.linkedin.com/in/{formatLinkedIn(
+            person.name,
+          )}-3a7a57332/"
           target="_blank"
         >
           <LinkedinIcon />
@@ -39,7 +52,7 @@
         >
       </li>
       <li>
-        <a href="https://github.com/MaartentePoele" target="_blank">
+        <a href="https://github.com/{person.github_handle}" target="_blank">
           <GithubIcon />
           GitHub</a
         >
