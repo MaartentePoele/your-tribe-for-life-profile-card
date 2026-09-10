@@ -62,12 +62,35 @@
 </main>
 
 <style>
+  main {
+    display: grid;
+    height: 100dvh;
+    place-items: center;
+  }
+
   article {
     background-color: var(--bg);
     display: grid;
     grid-template-rows: max-content max-content max-content 1fr;
     height: 100dvh;
     justify-items: center;
+    grid-template-areas: 
+    "figure"
+    "name"
+    "job"
+    "links";
+
+    @media (min-width: 800px) {
+      height: clamp(400px, 33.33vw, 600px);
+      aspect-ratio: 1.6 / 1;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: max-content max-content 1fr;
+      grid-template-areas:
+        "figure name"
+        "figure job"
+        "figure links";
+      justify-items: start;
+    }
   }
 
   figure {
@@ -77,8 +100,18 @@
       var(--bg) 50%
     );
     display: grid;
+    grid-area: figure;
     padding: 2rem 0;
     place-items: center;
+
+    @media (min-width: 800px) {
+      background: linear-gradient(
+        to right,
+        var(--primary),
+        var(--primary) 50%,
+        var(--bg) 50%
+      );
+    }
 
     img {
       aspect-ratio: 1;
@@ -90,6 +123,16 @@
 
   h1 {
     color: var(--content);
+    grid-area: name;
+    
+    @media (min-width: 800px) {
+      padding-top: clamp(2rem, 5.33vw, 4rem);
+    }
+  }
+
+  h2 {
+    grid-area: job;
+    font-weight: normal;
   }
 
   ul {
@@ -97,6 +140,7 @@
     display: grid;
     grid-template-rows: repeat(5, max-content);
     gap: 1.5rem;
+    grid-area: links;
 
     li {
       align-items: center;
