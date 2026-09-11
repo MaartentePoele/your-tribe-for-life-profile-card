@@ -4,6 +4,7 @@
   import LinkedinIcon from "$lib/components/icons/LinkedinIcon.svelte";
   import PhoneIcon from "$lib/components/icons/PhoneIcon.svelte";
   import WebsiteIcon from "$lib/components/icons/WebsiteIcon.svelte";
+  import ThemeSwitch from "$lib/components/ThemeSwitch.svelte";
 
   let { data } = $props();
   const person = data.person;
@@ -19,6 +20,7 @@
 
 <main>
   <article>
+    <ThemeSwitch />
     <figure>
       <img
         src="https://fdnd.directus.app/assets/{person.mugshot_year2}"
@@ -70,15 +72,16 @@
 
   article {
     background-color: var(--bg);
+    position: relative;
     display: grid;
     grid-template-rows: max-content max-content max-content 1fr;
     height: 100dvh;
     justify-items: center;
-    grid-template-areas: 
-    "figure"
-    "name"
-    "job"
-    "links";
+    grid-template-areas:
+      "figure"
+      "name"
+      "job"
+      "links";
 
     @media (min-width: 800px) {
       height: clamp(400px, 33.33vw, 600px);
@@ -124,7 +127,7 @@
   h1 {
     color: var(--content);
     grid-area: name;
-    
+
     @media (min-width: 800px) {
       padding-top: clamp(2rem, 5.33vw, 4rem);
     }
