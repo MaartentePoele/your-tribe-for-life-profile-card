@@ -20,6 +20,17 @@
 
 <main>
   <article>
+    <div class="hover-wrapper">
+      <div class="hover top-left"></div>
+      <div class="hover top-center"></div>
+      <div class="hover top-right"></div>
+      <div class="hover middle-left"></div>
+      <div class="hover middle-center"></div>
+      <div class="hover middle-right"></div>
+      <div class="hover bottom-left"></div>
+      <div class="hover bottom-center"></div>
+      <div class="hover bottom-right"></div>
+    </div>
     <ThemeSwitch />
     <figure>
       <img
@@ -83,6 +94,9 @@
       "job"
       "links";
 
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in-out;
+
     @media (min-width: 800px) {
       height: clamp(400px, 33.33vw, 600px);
       aspect-ratio: 1.6 / 1;
@@ -121,6 +135,7 @@
       border-radius: 50%;
       object-fit: cover;
       width: clamp(225px, 75%, 250px);
+      transform: translateZ(20px);
     }
   }
 
@@ -160,6 +175,45 @@
           color: var(--primary);
         }
       }
+    }
+  }
+
+  @media (min-width: 800px) {
+    .hover-wrapper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      position: absolute;
+      opacity: 0.3;
+      inset: 0;
+    }
+
+    article:has(.top-left:hover) {
+      transform: rotateX(15deg) rotateY(-15deg);
+    }
+    article:has(.top-center:hover) {
+      transform: rotateX(15deg) rotateY(0deg);
+    }
+    article:has(.top-right:hover) {
+      transform: rotateX(15deg) rotateY(15deg);
+    }
+    article:has(.middle-left:hover) {
+      transform: rotateX(0deg) rotateY(-15deg);
+    }
+    article:has(.middle-center:hover) {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+    article:has(.middle-right:hover) {
+      transform: rotateX(0deg) rotateY(15deg);
+    }
+    article:has(.bottom-left:hover) {
+      transform: rotateX(-15deg) rotateY(-15deg);
+    }
+    article:has(.bottom-center:hover) {
+      transform: rotateX(-15deg) rotateY(0deg);
+    }
+    article:has(.bottom-right:hover) {
+      transform: rotateX(-15deg) rotateY(15deg);
     }
   }
 </style>
