@@ -1,13 +1,24 @@
 <script>
-	import favicon from '$lib/assets/favicon.svg';
-  import '../styles/stylesheet.css'
+  import favicon from "$lib/assets/favicon.svg";
+  import "../styles/stylesheet.css";
 
-	let { children } = $props();
+  let { children } = $props();
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon}>
+  <link rel="icon" href={favicon} />
   <title>Profile card Maarten te Poele</title>
 </svelte:head>
 
-{@render children()}
+<main>
+  {@render children()}
+</main>
+
+<style>
+  main {
+    display: grid;
+    height: 100dvh;
+    perspective: 1000px;
+    place-items: center;
+  }
+</style>

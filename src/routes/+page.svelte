@@ -5,97 +5,80 @@
   import PhoneIcon from "$lib/components/icons/PhoneIcon.svelte";
   import WebsiteIcon from "$lib/components/icons/WebsiteIcon.svelte";
   import ThemeSwitch from "$lib/components/ThemeSwitch.svelte";
+  import { dotify } from "$lib/utils";
+  import { dashify } from "$lib/utils";
 
   let { data } = $props();
   const person = data.person;
-
-  function formatEmail(name) {
-    return name.replaceAll(" ", ".").toLowerCase();
-  }
-
-  function formatLinkedIn(name) {
-    return name.replaceAll(" ", "-").toLowerCase();
-  }
 </script>
 
-<main>
-  <article>
-    <ThemeSwitch />
-    <figure>
-      <picture>
-        <source
-          type="image/avif"
-          srcset="https://fdnd.directus.app/assets/{person.mugshot_year2}?format=avif&height=550"
-        />
-        <source
-          type="image/webp"
-          srcset="https://fdnd.directus.app/assets/{person.mugshot_year2}?format=webp&height=550"
-        />
-        <img
-          src="https://fdnd.directus.app/assets/{person.mugshot_year2}?height=550"
-          alt="Profielfoto van {person.name}"
-          fetchpriority="high"
-          width="250"
-          height="250"
-        />
-      </picture>
-    </figure>
+<article>
+  <ThemeSwitch />
+  <figure>
+    <picture>
+      <source
+        type="image/avif"
+        srcset="https://fdnd.directus.app/assets/{person.mugshot_year2}?format=avif&height=550"
+      />
+      <source
+        type="image/webp"
+        srcset="https://fdnd.directus.app/assets/{person.mugshot_year2}?format=webp&height=550"
+      />
+      <img
+        src="https://fdnd.directus.app/assets/{person.mugshot_year2}?height=550"
+        alt="Profielfoto van {person.name}"
+        fetchpriority="high"
+        width="250"
+        height="250"
+      />
+    </picture>
+  </figure>
 
-    <h1>{person.name}</h1>
-    <h2>Frontend Developer</h2>
-    <ul>
-      <li>
-        <PhoneIcon />
-        06-12345678
-      </li>
-      <li><EmailIcon />{formatEmail(person.name)}@hva.nl</li>
-      <li>
-        <a href={person.website} target="_blank">
-          <WebsiteIcon />
-          Portfolio
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.linkedin.com/in/{formatLinkedIn(
-            person.name,
-          )}-3a7a57332/"
-          target="_blank"
-        >
-          <LinkedinIcon />
-          LinkedIn
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/{person.github_handle}" target="_blank">
-          <GithubIcon />
-          GitHub
-        </a>
-      </li>
-    </ul>
+  <h1>{person.name}</h1>
+  <h2>Frontend Developer</h2>
+  <ul>
+    <li>
+      <PhoneIcon />
+      06-12345678
+    </li>
+    <li><EmailIcon />{dotify(person.name)}@hva.nl</li>
+    <li>
+      <a href={person.website} target="_blank">
+        <WebsiteIcon />
+        Portfolio
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://www.linkedin.com/in/{dashify(person.name)}-3a7a57332/"
+        target="_blank"
+      >
+        <LinkedinIcon />
+        LinkedIn
+      </a>
+    </li>
+    <li>
+      <a href="https://github.com/{person.github_handle}" target="_blank">
+        <GithubIcon />
+        GitHub
+      </a>
+    </li>
+  </ul>
 
-    <div class="hover-wrapper">
-      <div class="hover top-left"></div>
-      <div class="hover top-center"></div>
-      <div class="hover top-right"></div>
-      <div class="hover middle-left"></div>
-      <div class="hover middle-center"></div>
-      <div class="hover middle-right"></div>
-      <div class="hover bottom-left"></div>
-      <div class="hover bottom-center"></div>
-      <div class="hover bottom-right"></div>
-    </div>
-  </article>
-</main>
+  <div class="hover-wrapper">
+    <div class="hover top-left"></div>
+    <div class="hover top-center"></div>
+    <div class="hover top-right"></div>
+    <div class="hover middle-left"></div>
+    <div class="hover middle-center"></div>
+    <div class="hover middle-right"></div>
+    <div class="hover bottom-left"></div>
+    <div class="hover bottom-center"></div>
+    <div class="hover bottom-right"></div>
+  </div>
+</article>
 
 <style>
-  main {
-    display: grid;
-    height: 100dvh;
-    perspective: 1000px;
-    place-items: center;
-  }
-
   article {
     background-color: var(--bg);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
@@ -179,10 +162,10 @@
     gap: 1.5rem;
     grid-area: links;
     grid-template-rows: repeat(5, max-content);
-    z-index: 3;
 
     li {
       align-items: center;
+      z-index: 3;
       color: var(--content);
       display: flex;
       gap: 0.5rem;
