@@ -33,10 +33,23 @@
     </div>
     <ThemeSwitch />
     <figure>
-      <img
-        src="https://fdnd.directus.app/assets/{person.mugshot_year2}"
-        alt="Profielfoto van {person.name}"
-      />
+      <picture>
+        <source
+          type="image/avif"
+          srcset="https://fdnd.directus.app/assets/{person.mugshot_year2}?format=avif&height=550"
+        />
+        <source
+          type="image/webp"
+          srcset="https://fdnd.directus.app/assets/{person.mugshot_year2}?format=webp&height=550"
+        />
+        <img
+          src="https://fdnd.directus.app/assets/{person.mugshot_year2}?height=550"
+          alt="Profielfoto van {person.name}"
+          fetchpriority="high"
+          width="250"
+          height="auto"
+        />
+      </picture>
     </figure>
 
     <h1>{person.name}</h1>
@@ -130,12 +143,18 @@
       );
     }
 
-    img {
-      aspect-ratio: 1;
-      border-radius: 50%;
-      object-fit: cover;
-      width: clamp(225px, 75%, 250px);
-      transform: translateZ(20px);
+    picture {
+      display: flex;
+      justify-content: center;
+
+      img {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        object-fit: cover;
+        width: clamp(225px, 75%, 250px);
+        height: auto;
+        transform: translateZ(20px);
+      }
     }
   }
 
@@ -191,27 +210,31 @@
     article:has(.top-left:hover) {
       transform: rotateX(15deg) rotateY(-15deg);
     }
+
     article:has(.top-center:hover) {
       transform: rotateX(15deg) rotateY(0deg);
     }
-    article:has(.top-right:hover) {
-      transform: rotateX(15deg) rotateY(15deg);
-    }
+
     article:has(.middle-left:hover) {
       transform: rotateX(0deg) rotateY(-15deg);
     }
+
     article:has(.middle-center:hover) {
       transform: rotateX(0deg) rotateY(0deg);
     }
+
     article:has(.middle-right:hover) {
       transform: rotateX(0deg) rotateY(15deg);
     }
+
     article:has(.bottom-left:hover) {
       transform: rotateX(-15deg) rotateY(-15deg);
     }
+
     article:has(.bottom-center:hover) {
       transform: rotateX(-15deg) rotateY(0deg);
     }
+
     article:has(.bottom-right:hover) {
       transform: rotateX(-15deg) rotateY(15deg);
     }
