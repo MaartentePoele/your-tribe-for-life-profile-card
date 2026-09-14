@@ -36,7 +36,7 @@
           alt="Profielfoto van {person.name}"
           fetchpriority="high"
           width="250"
-          height="auto"
+          height="250"
         />
       </picture>
     </figure>
@@ -52,8 +52,8 @@
       <li>
         <a href={person.website} target="_blank">
           <WebsiteIcon />
-          Portfolio</a
-        >
+          Portfolio
+        </a>
       </li>
       <li>
         <a
@@ -63,14 +63,14 @@
           target="_blank"
         >
           <LinkedinIcon />
-          LinkedIn</a
-        >
+          LinkedIn
+        </a>
       </li>
       <li>
         <a href="https://github.com/{person.github_handle}" target="_blank">
           <GithubIcon />
-          GitHub</a
-        >
+          GitHub
+        </a>
       </li>
     </ul>
 
@@ -92,34 +92,35 @@
   main {
     display: grid;
     height: 100dvh;
+    perspective: 1000px;
     place-items: center;
   }
 
   article {
     background-color: var(--bg);
-    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     display: grid;
-    grid-template-rows: max-content max-content max-content 1fr;
-    height: 100dvh;
-    justify-items: center;
     grid-template-areas:
       "figure"
       "name"
       "job"
       "links";
-
+    grid-template-rows: max-content max-content max-content 1fr;
+    height: 100dvh;
+    justify-items: center;
+    position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.3s ease-out;
 
     @media (min-width: 800px) {
-      height: clamp(400px, 33.33vw, 600px);
       aspect-ratio: 1.6 / 1;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: max-content max-content 1fr;
       grid-template-areas:
         "figure name"
         "figure job"
         "figure links";
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: max-content max-content 1fr;
+      height: clamp(400px, 33.33vw, 600px);
       justify-items: start;
     }
   }
@@ -151,9 +152,9 @@
       img {
         aspect-ratio: 1;
         border-radius: 50%;
+        height: auto;
         object-fit: cover;
         width: clamp(225px, 75%, 250px);
-        height: auto;
       }
     }
   }
@@ -175,9 +176,9 @@
   ul {
     align-content: center;
     display: grid;
-    grid-template-rows: repeat(5, max-content);
     gap: 1.5rem;
     grid-area: links;
+    grid-template-rows: repeat(5, max-content);
     z-index: 3;
 
     li {
@@ -190,6 +191,7 @@
         display: flex;
         color: var(--content);
         gap: 0.5rem;
+        transition: color 0.15s ease-out;
 
         &:hover {
           color: var(--primary);
@@ -203,21 +205,21 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
-      position: absolute;
       inset: 0;
+      position: absolute;
       z-index: 2;
     }
 
     article:has(.top-left:hover) {
-      transform: rotateX(15deg) rotateY(-15deg);
+      transform: rotateX(5deg) rotateY(-5deg);
     }
 
     article:has(.top-center:hover) {
-      transform: rotateX(15deg) rotateY(0deg);
+      transform: rotateX(5deg) rotateY(0deg);
     }
 
     article:has(.middle-left:hover) {
-      transform: rotateX(0deg) rotateY(-15deg);
+      transform: rotateX(0deg) rotateY(-5deg);
     }
 
     article:has(.middle-center:hover) {
@@ -225,19 +227,19 @@
     }
 
     article:has(.middle-right:hover) {
-      transform: rotateX(0deg) rotateY(15deg);
+      transform: rotateX(0deg) rotateY(5deg);
     }
 
     article:has(.bottom-left:hover) {
-      transform: rotateX(-15deg) rotateY(-15deg);
+      transform: rotateX(-5deg) rotateY(-5deg);
     }
 
     article:has(.bottom-center:hover) {
-      transform: rotateX(-15deg) rotateY(0deg);
+      transform: rotateX(-5deg) rotateY(0deg);
     }
 
     article:has(.bottom-right:hover) {
-      transform: rotateX(-15deg) rotateY(15deg);
+      transform: rotateX(-5deg) rotateY(5deg);
     }
   }
 </style>
