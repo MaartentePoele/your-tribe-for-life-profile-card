@@ -20,17 +20,6 @@
 
 <main>
   <article>
-    <div class="hover-wrapper">
-      <div class="hover top-left"></div>
-      <div class="hover top-center"></div>
-      <div class="hover top-right"></div>
-      <div class="hover middle-left"></div>
-      <div class="hover middle-center"></div>
-      <div class="hover middle-right"></div>
-      <div class="hover bottom-left"></div>
-      <div class="hover bottom-center"></div>
-      <div class="hover bottom-right"></div>
-    </div>
     <ThemeSwitch />
     <figure>
       <picture>
@@ -84,6 +73,18 @@
         >
       </li>
     </ul>
+
+    <div class="hover-wrapper">
+      <div class="hover top-left"></div>
+      <div class="hover top-center"></div>
+      <div class="hover top-right"></div>
+      <div class="hover middle-left"></div>
+      <div class="hover middle-center"></div>
+      <div class="hover middle-right"></div>
+      <div class="hover bottom-left"></div>
+      <div class="hover bottom-center"></div>
+      <div class="hover bottom-right"></div>
+    </div>
   </article>
 </main>
 
@@ -153,7 +154,6 @@
         object-fit: cover;
         width: clamp(225px, 75%, 250px);
         height: auto;
-        transform: translateZ(20px);
       }
     }
   }
@@ -178,6 +178,7 @@
     grid-template-rows: repeat(5, max-content);
     gap: 1.5rem;
     grid-area: links;
+    z-index: 3;
 
     li {
       align-items: center;
@@ -203,8 +204,8 @@
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
       position: absolute;
-      opacity: 0.3;
       inset: 0;
+      z-index: 2;
     }
 
     article:has(.top-left:hover) {

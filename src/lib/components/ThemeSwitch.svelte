@@ -25,6 +25,7 @@
     background-color: var(--bg);
     padding: 0.25rem;
     border-radius: 50%;
+    z-index: 3;
 
     input {
       display: none;
