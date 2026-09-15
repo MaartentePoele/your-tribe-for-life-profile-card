@@ -50,4 +50,48 @@
       stroke: var(--primary);
     }
   }
+
+  @media (prefers-color-scheme: light) {
+    .sun-icon {
+      display: none;
+    }
+
+    .moon-icon {
+      display: block;
+    }
+
+    :global(html:has(#theme-switch:checked)) {
+      color-scheme: dark;
+
+      .sun-icon {
+        display: block;
+      }
+
+      .moon-icon {
+        display: none;
+      }
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .sun-icon {
+      display: block;
+    }
+
+    .moon-icon {
+      display: none;
+    }
+
+    :global(html:has(#theme-switch:checked)) {
+      color-scheme: light;
+
+      .sun-icon {
+        display: none;
+      }
+
+      .moon-icon {
+        display: block;
+      }
+    }
+  }
 </style>
