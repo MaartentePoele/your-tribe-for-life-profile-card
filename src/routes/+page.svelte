@@ -93,7 +93,10 @@
     justify-items: center;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.3s ease-out;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform 0.3s ease-out;
+    }
 
     @media (min-width: 800px) {
       aspect-ratio: 1.6 / 1;
@@ -174,7 +177,10 @@
         display: flex;
         color: var(--content);
         gap: 0.5rem;
-        transition: color 0.15s ease-out;
+
+        @media (prefers-reduced-motion: no-preference) {
+          transition: color 0.15s ease-out;
+        }
 
         &:hover {
           color: var(--primary);
