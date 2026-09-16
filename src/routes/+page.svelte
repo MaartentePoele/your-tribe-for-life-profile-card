@@ -93,10 +93,7 @@
     justify-items: center;
     position: relative;
     transform-style: preserve-3d;
-
-    @media (prefers-reduced-motion: no-preference) {
-      transition: transform 0.3s ease-out;
-    }
+    transition: transform 0.3s ease-out;
 
     @media (min-width: 800px) {
       aspect-ratio: 1.6 / 1;
@@ -177,10 +174,7 @@
         display: flex;
         color: var(--content);
         gap: 0.5rem;
-
-        @media (prefers-reduced-motion: no-preference) {
-          transition: color 0.15s ease-out;
-        }
+        transition: color 0.15s ease-out;
 
         &:hover {
           color: var(--primary);
@@ -190,45 +184,47 @@
   }
 
   @media (min-width: 800px) {
-    .hover-wrapper {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      inset: 0;
-      position: absolute;
-      z-index: 2;
-    }
+    @media (prefers-reduced-motion: no-preference) {
+      .hover-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        inset: 0;
+        position: absolute;
+        z-index: 2;
+      }
 
-    article:has(.top-left:hover) {
-      transform: rotateX(5deg) rotateY(-5deg);
-    }
+      article:has(.top-left:hover) {
+        transform: rotateX(5deg) rotateY(-5deg);
+      }
 
-    article:has(.top-center:hover) {
-      transform: rotateX(5deg) rotateY(0deg);
-    }
+      article:has(.top-center:hover) {
+        transform: rotateX(5deg) rotateY(0deg);
+      }
 
-    article:has(.middle-left:hover) {
-      transform: rotateX(0deg) rotateY(-5deg);
-    }
+      article:has(.middle-left:hover) {
+        transform: rotateX(0deg) rotateY(-5deg);
+      }
 
-    article:has(.middle-center:hover) {
-      transform: rotateX(0deg) rotateY(0deg);
-    }
+      article:has(.middle-center:hover) {
+        transform: rotateX(0deg) rotateY(0deg);
+      }
 
-    article:has(.middle-right:hover) {
-      transform: rotateX(0deg) rotateY(5deg);
-    }
+      article:has(.middle-right:hover) {
+        transform: rotateX(0deg) rotateY(5deg);
+      }
 
-    article:has(.bottom-left:hover) {
-      transform: rotateX(-5deg) rotateY(-5deg);
-    }
+      article:has(.bottom-left:hover) {
+        transform: rotateX(-5deg) rotateY(-5deg);
+      }
 
-    article:has(.bottom-center:hover) {
-      transform: rotateX(-5deg) rotateY(0deg);
-    }
+      article:has(.bottom-center:hover) {
+        transform: rotateX(-5deg) rotateY(0deg);
+      }
 
-    article:has(.bottom-right:hover) {
-      transform: rotateX(-5deg) rotateY(5deg);
+      article:has(.bottom-right:hover) {
+        transform: rotateX(-5deg) rotateY(5deg);
+      }
     }
   }
 </style>
